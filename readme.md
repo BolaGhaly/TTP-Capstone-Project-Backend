@@ -11,6 +11,7 @@
   <kbd> <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" /> </kbd>
   <kbd> <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" /> </kbd>
   <kbd> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" /> </kbd>
+  <kbd> <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" /> </kbd>
   <kbd> <img src="https://img.shields.io/badge/Deployed%20on%20Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" /> </kbd>
 </div>
 
