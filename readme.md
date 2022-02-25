@@ -5,7 +5,7 @@
 
 ## Technologies Used:
 <div>
-  <kbd> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" /> </kbd>
+  <kbd> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" /> </kbd>
 </div>
 </br>
 </br>
