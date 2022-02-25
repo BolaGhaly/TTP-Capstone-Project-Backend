@@ -7,9 +7,8 @@
 <div>
   <kbd> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" /> </kbd>
 </div>
-</br>
-</br>
 
+## Custom Routes:
 Players' Cards Database endpoint on Heroku: https://ttp-capstone-project-backend.herokuapp.com/players_cards
 
 <div>
