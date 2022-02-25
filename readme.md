@@ -1,6 +1,8 @@
 ## TTP Capstone Project - Backend (Servers + Databases)
 
 Backend deployed on Heroku: https://ttp-capstone-project-backend.herokuapp.com/
+</br>
+</br>
 <a href="https://ttp-capstone-project-backend.herokuapp.com/"> <img src="https://img.shields.io/website-up-down-blue-red/http/monip.org.svg"/> </a>
 
 Players' Cards Database endpoint on Heroku: https://ttp-capstone-project-backend.herokuapp.com/players_cards
