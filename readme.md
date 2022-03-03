@@ -13,6 +13,7 @@
   <kbd> <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" /> </kbd>
   &nbsp;
   <kbd> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" /> </kbd>
+  &nbsp;
   <kbd> <a href="https://ttp-capstone-project-backend.herokuapp.com/"> <img src="https://img.shields.io/badge/Deployed%20on%20Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" /> </a> </kbd>
 </div>
 
