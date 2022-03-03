@@ -24,39 +24,40 @@
         <br/>
         <img src="https://user-images.githubusercontent.com/59656591/156496724-44cc32b5-5b9b-4645-92c6-b078ffa4cde5.PNG">
     </div>
-    <div>
-        <h3> <ins>:arrow_right:Login and Sign Up Table:</ins> </h3>
-        <li>/signup: POST request to insert a new user's username, email, password, and currency/balance</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-        <li>/login: POST request to insert the user's email and password. NOTE: The user must be registered first by signing up!! Otherwise, it will result in getting an error saying that "Email is not registered".</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-        <li>/users: GET request to get all of the users' information.</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-        <li>/user/id: GET request to get one user's information.</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-        <li>/user/id: PUT request to update the user's currency/balance.</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-        <li>/user/id: DELETE request to delete a user.</li>
-        <br/>
-        <img src="">
-        <br/>
-        <br/>
-    </div>
+
+  <h3> <ins>:arrow_right:Login and Sign Up Table:</ins> </h3>
+  <li>/signup: POST request to insert a new user's username, email, password, and currency/balance</li>
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+  <li>/login: POST request to insert the user's email and password.</li>
+  ** NOTE: ** The user must be registered first by signing up!! Otherwise, it will result in getting an error saying that "Email is not registered".
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+  <li>/users: GET request to get all of the users' information.</li>
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+  <li>/user/id: GET request to get one user's information.</li>
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+  <li>/user/id: PUT request to update the user's currency/balance.</li>
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+  <li>/user/id: DELETE request to delete a user.</li>
+  <br/>
+  <img src="">
+  <br/>
+  <br/>
+
 
 </div>
   <br>
