@@ -1,11 +1,9 @@
 <a href="https://ttp-capstone-project-backend.herokuapp.com/"> <img src="https://img.shields.io/website-up-down-blue-red/http/monip.org.svg"/> </a>
 
-## TTP Capstone Project - Backend (Servers + Databases)
+<h1 align="center"> TTP Capstone Project - Backend (Servers + Databases) </h1>
 
-<h3> Backend deployed on Heroku: https://ttp-capstone-project-backend.herokuapp.com/ </h3>
-
-## Technologies Used:
-<div>
+<h2 align="center">  Technologies Used  </h3>
+<div align="center">
   <kbd> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" /> </kbd>
   <kbd> <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" /> </kbd>
   <kbd> <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" /> </kbd>
@@ -14,13 +12,14 @@
   <kbd> <a href="https://ttp-capstone-project-backend.herokuapp.com/"> <img src="https://img.shields.io/badge/Deployed%20on%20Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" /> </a> </kbd>
 </div>
 
-## Custom Routes:
-Players' Cards Database endpoint on Heroku: https://ttp-capstone-project-backend.herokuapp.com/players_cards
-
-<div>
-  -- Players' Cards Database routes on Heroku:
-  <li>/players_cards: GET request to get all of the players' cards (info)</li>
-  <li>/players_cards/id: GET request to get one player's card (info)</li>
+<h2 align="center"> Custom Routes </h2>
+<h3> -- NBA Players Information Table: </h3>
+  <li>/players_cards: GET request to get all of the players' information.</li>
+  <br/>
+  <img src="https://user-images.githubusercontent.com/59656591/156496571-ef59e681-c33c-4d5b-aaea-06977b14556f.PNG">
+  <li>/players_cards/id: GET request to get one player's information.</li>
+  <br/>
+  <img src="https://user-images.githubusercontent.com/59656591/156496724-44cc32b5-5b9b-4645-92c6-b078ffa4cde5.PNG">
 </div>
   <br>
   <br>
