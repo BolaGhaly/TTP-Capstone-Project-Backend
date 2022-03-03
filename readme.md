@@ -65,7 +65,7 @@
       <h3> <ins>:notebook_with_decorative_cover:User's Collection Joint Table:</ins> </h3>
       <li>/users_collection: POST request to insert the user's id (of the user that's logged in) and the player's id (of the card that they receive from opening a pack/chest) into the "users_collection" table.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156501897-94cff0a7-0435-41c9-aedd-771526ce7fae.PNG">
       <br/>
       <br/>
       <li>/users_collection: GET request to get everything that's in the "users_collection" table</li>
@@ -80,5 +80,5 @@
       <br/>
       <li>/users_collection/id: DELETE request to delete a user's collection based on the user's id.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156501423-d5ead75b-55db-45ee-800d-efb2abe6ac3b.PNG">
   </div>
