@@ -63,7 +63,7 @@
 
   <div>
       <h3> <ins>:notebook_with_decorative_cover:User's Collection Joint Table:</ins> </h3>
-      <li>/users_collection: POST request to insert the user's id (of the user that's logged in) and the player's id (of the card that they received from opening a pack/chest) into the "users_collection" table.</li>
+      <li>/users_collection: POST request to insert the user's id (of the user that's logged in) and the player's id (of the card that they receive from opening a pack/chest) into the "users_collection" table.</li>
       <br/>
       <img src="">
       <br/>
