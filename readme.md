@@ -70,12 +70,12 @@
       <br/>
       <li>/users_collection: GET request to get everything that's in the "users_collection" table</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156501113-cd367263-2925-41af-abca-244a10cf8fc5.PNG">
       <br/>
       <br/>
       <li>/users_collection/id: GET request to get an array of objects of the user's id and their players' id</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156501296-8ba98300-b8de-4513-9024-3689550906a9.PNG">
       <br/>
       <br/>
       <li>/users_collection/id: DELETE request to delete a user's collection based on the user's id.</li>
