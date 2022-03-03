@@ -29,12 +29,12 @@
       <h3> <ins>:closed_lock_with_key:Login and Sign Up Table:</ins> </h3>
       <li>/signup: POST request to insert a new user's username, email, password, and currency/balance</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156504947-f46ab39d-dd30-4d8e-897b-a3bcc94c97c7.PNG">
       <br/>
       <br/>
       <li>/login: POST request to insert the user's email and password. <strong>NOTE:</strong> The user must be registered first by signing up!! Otherwise, it will result in getting an error saying that "Email is not registered". </li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156505159-6011eb05-2ce7-48cf-8a83-3df9dd8e12d8.PNG">
       <br/>
       <br/>
       <li>/users: GET request to get all of the users' information.</li>
@@ -49,7 +49,7 @@
       <br/>
       <li>/user/id: PUT request to update the user's currency/balance.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156505764-01d8f348-ca97-419e-b61b-c4fec1da8686.PNG">
       <br/>
       <br/>
       <li>/user/id: DELETE request to delete a user.</li>
@@ -80,5 +80,4 @@
       <br/>
       <img src="https://user-images.githubusercontent.com/59656591/156502930-e90b633f-fc51-4167-afde-749e656774a4.PNG">
   </div>
-  
-  
+
