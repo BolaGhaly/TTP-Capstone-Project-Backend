@@ -73,12 +73,12 @@
       <img src="">
       <br/>
       <br/>
-      <li>/users_collection/id: GET request to get an array of objects of the user's id (passed as a param) and their players' id (players cards)</li>
+      <li>/users_collection/id: GET request to get an array of objects of the user's id and their players' id</li>
       <br/>
       <img src="">
       <br/>
       <br/>
-      <li>/users_collection/id: DELETE request to delete a user's collection based on the user's id (passed as a param).</li>
+      <li>/users_collection/id: DELETE request to delete a user's collection based on the user's id.</li>
       <br/>
       <img src="">
   </div>
