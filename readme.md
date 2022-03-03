@@ -39,12 +39,12 @@
       <br/>
       <li>/users: GET request to get all of the users' information.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156502469-e7a210dd-999c-41b2-8235-0ff94ba1e118.PNG">
       <br/>
       <br/>
       <li>/user/id: GET request to get one user's information.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156502606-e778a218-052f-4aa9-b3c6-b6262c7ecb4e.PNG">
       <br/>
       <br/>
       <li>/user/id: PUT request to update the user's currency/balance.</li>
@@ -54,12 +54,10 @@
       <br/>
       <li>/user/id: DELETE request to delete a user.</li>
       <br/>
-      <img src="">
+      <img src="https://user-images.githubusercontent.com/59656591/156502682-f7cfcd89-22b9-476f-894b-8bfaf902ac82.PNG">
       <br/>
       <br/>
   </div>
-
-
 
   <div>
       <h3> <ins>:notebook_with_decorative_cover:User's Collection Joint Table:</ins> </h3>
