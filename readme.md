@@ -13,19 +13,34 @@
 </div>
 
 <h2 align="center"> Custom Routes </h2>
-  <div>
-      <h3> -- NBA Players Information Table: </h3>
-      <li>/players_cards: GET request to get all of the players' information.</li>
-      <br/>
-      <img src="https://user-images.githubusercontent.com/59656591/156496571-ef59e681-c33c-4d5b-aaea-06977b14556f.PNG">
-      <li>/players_cards/id: GET request to get one player's information.</li>
-      <br/>
-      <img src="https://user-images.githubusercontent.com/59656591/156496724-44cc32b5-5b9b-4645-92c6-b078ffa4cde5.PNG">
-  </div>
-  <br>
-  <br>
-
-  -- Login and Sign Up routes on Heroku:
+    <div>
+        <h3> <ins>:arrow_right:NBA Players Information Table:</ins> </h3>
+        <li>/players_cards: GET request to get all of the players' information.</li>
+        <br/>
+        <img src="https://user-images.githubusercontent.com/59656591/156496571-ef59e681-c33c-4d5b-aaea-06977b14556f.PNG">
+        <br/>
+        <br/>
+        <li>/players_cards/id: GET request to get one player's information.</li>
+        <br/>
+        <img src="https://user-images.githubusercontent.com/59656591/156496724-44cc32b5-5b9b-4645-92c6-b078ffa4cde5.PNG">
+    </div>
+    <div>
+        <h3> <ins>:arrow_right:Login and Sign Up Table:</ins> </h3>
+        <li>/signup: POST request to insert a new user's username, email, password, and currency/balance</li>
+        <br/>
+        <img src="">
+        <br/>
+        <br/>
+        <li>/players_cards/id: GET request to get one player's information.</li>
+        <br/>
+        <img src="">
+        <br/>
+        <li>/players_cards/id: GET request to get one player's information.</li>
+        <br/>
+        <img src="">
+        <br/>
+        <br/>
+    </div>
   <li>/signup: POST request to insert a new user's username, email, password, and currency/balance</li>
   <li>/login: POST request to insert the user's email and password. NOTE: The user must be registered first by signing up!! Otherwise, it will result in getting an error saying that "Email is not registered".</li>
   <li>/users: GET request to get all of the users' information.</li>
