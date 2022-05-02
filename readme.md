@@ -2,7 +2,7 @@
 
 <h1 align="center"> TTP Capstone Project - Backend (Servers + Databases) </h1>
 
-<h2 align="center">  Technologies Used  </h3> 
+<h2 align="center">  Technologies Used  </h3>
 <div align="center">
   <kbd> <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" /> </kbd>
   &nbsp;
