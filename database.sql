@@ -12,7 +12,7 @@ CREATE TABLE players_info(
 );
 
 SELECT * FROM players_info;
-
+ 
 -------------------------------------------------------------------------------
 
 CREATE TABLE users(
