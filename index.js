@@ -189,7 +189,7 @@ app.get("/users_collection/:id", async (req, res) => {
 });
 
 //takes user's id as a param
-//deletes a user's collection based on the user's id (passed as a param)
+//deletes a user's collection
 app.delete("/users_collection/:id", async (req, res) => {
   try {
     const { id } = req.params;
