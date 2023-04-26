@@ -93,19 +93,22 @@ const getUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   const { id } = req.params;
-  const query = "SELECT * FROM users WHERE id = $1";
-  const values = [id];
-  try {
-    const { rows } = await pool.query(query, values);
-    if (rows.length === 0) {
-      res.status(404).json({
-        error: "User not found",
-      });
-    }
-    res.json(rows[0]);
-  } catch (err) {
-    res.status(500).send("Server Error");
+  const { data, error } = await supabase
+    .from("users")
+    .select()
+    .eq("userId", id);
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+
+  if (data.length === 0) {
+    return res.status(404).json({
+      error: "User not found",
+    });
+  }
+
+  res.json(data);
 };
 
 const updateCurrency = async (req, res) => {
