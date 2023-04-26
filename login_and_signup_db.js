@@ -80,12 +80,15 @@ const login = async (request, response) => {
 };
 
 const getUsers = async (req, res) => {
-  try {
-    const allUsers = await pool.query("SELECT * FROM users");
-    res.json(allUsers.rows);
-  } catch (error) {
-    console.error(error.message);
+  const { data, error } = await supabase
+    .from("users")
+    .select()
+    .order("userId", { ascending: true });
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+  res.json(data);
 };
 
 const getUser = async (req, res) => {
