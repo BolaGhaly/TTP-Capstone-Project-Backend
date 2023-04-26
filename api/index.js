@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const compression = require("compression"); // import compression to reduce size of response
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5200;
 const pool = require("./db");
 const login_db = require("./login_and_signup_db");
 
