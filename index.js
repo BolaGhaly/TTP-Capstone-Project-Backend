@@ -22,7 +22,10 @@ app.get("/", (req, res) => {
 //--------------------------- Routes for players --------------------------
 //Get all players' cards
 app.get("/players_cards", async (req, res) => {
-  const { data, error } = await supabase.from("players").select();
+  const { data, error } = await supabase
+    .from("players")
+    .select()
+    .order("playerId", { ascending: true });
   if (error) {
     alert(error.message);
     return; // abort
@@ -33,7 +36,10 @@ app.get("/players_cards", async (req, res) => {
 //Get a player's card by their id
 app.get("/players_cards/:id", async (req, res) => {
   const { id } = req.params;
-  const { data, error } = await supabase.from("players").select().eq("playerId", id);
+  const { data, error } = await supabase
+    .from("players")
+    .select()
+    .eq("playerId", id);
   if (error) {
     alert(error.message);
     return; // abort
