@@ -1,11 +1,14 @@
 {
-  "name": "server",
+  "name": "ttp-capstone-project-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "./api/index.js",
+  "description": "TTP Capstone Project - Backend",
+  "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./api/index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +21,5 @@
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "pg": "^8.7.1"
-  },
-  "engines": {
-    "node": "18.x"
   }
 }
