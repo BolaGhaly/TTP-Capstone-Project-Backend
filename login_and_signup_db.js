@@ -52,29 +52,31 @@ const createUser = async (request, response) => {
 };
 
 const login = async (request, response) => {
-  try {
-    const { email, password } = request.body;
-    let errors = {};
+  const { email, password } = request.body;
+  let errors = {};
 
-    const user = await pool.query("SELECT * FROM users WHERE email = $1", [
-      email,
-    ]);
+  const { data, error } = await supabase
+    .from("users")
+    .select()
+    .eq("email", email);
 
-    if (user.rows.length === 0) {
-      response.status(400).json({ errors: "Email is not registered" });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.rows[0].password);
-    if (!isMatch) {
-      errors.password = "Password is incorrect";
-    }
-    if (Object.keys(errors).length > 0) {
-      return response.status(401).json(errors);
-    }
-    response.json({ success: true, data: user.rows[0] });
-  } catch (error) {
-    console.error(error.message);
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+
+  if (data.length === 0) {
+    errors.email = "Email is not registered";
+    return response.status(400).json(errors);
+  }
+
+  const isMatch = await bcrypt.compare(password, data[0].password);
+  if (!isMatch) {
+    errors.password = "Password is incorrect";
+    return response.status(400).json(errors);
+  }
+
+  response.json(data);
 };
 
 const getUsers = async (req, res) => {
