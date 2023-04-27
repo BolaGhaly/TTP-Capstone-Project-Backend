@@ -7,8 +7,8 @@ const url = process.env.SUPA_BASE_URL;
 const key = process.env.SUPA_BASE_KEY;
 const supabase = createClient(url, key);
 
-const createUser = async (request, response) => {
-  const { username, email, password, accountBalance } = request.body;
+const createUser = async (req, res) => {
+  const { username, email, password, accountBalance } = req.body;
   let errors = {};
 
   if (!emailValidation(email)) {
@@ -32,7 +32,7 @@ const createUser = async (request, response) => {
   }
 
   if (Object.keys(errors).length > 0) {
-    return response.status(400).json(errors);
+    return res.status(400).json(errors);
   }
 
   const salt = await bcrypt.genSalt(10); //salt encryption
@@ -48,11 +48,11 @@ const createUser = async (request, response) => {
     return; // abort
   }
 
-  response.json(data);
+  res.json(data);
 };
 
-const login = async (request, response) => {
-  const { email, password } = request.body;
+const login = async (req, res) => {
+  const { email, password } = req.body;
   let errors = {};
 
   const { data, error } = await supabase
@@ -67,16 +67,16 @@ const login = async (request, response) => {
 
   if (data.length === 0) {
     errors.email = "Email is not registered";
-    return response.status(400).json(errors);
+    return res.status(400).json(errors);
   }
 
   const isMatch = await bcrypt.compare(password, data[0].password);
   if (!isMatch) {
     errors.password = "Password is incorrect";
-    return response.status(400).json(errors);
+    return res.status(400).json(errors);
   }
 
-  response.json(data);
+  res.json(data);
 };
 
 const getUsers = async (req, res) => {
