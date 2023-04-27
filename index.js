@@ -131,16 +131,34 @@ app.get("/users_collection/:id", async (req, res) => {
 //Take a user's id as a param
 //Delete a user's collection
 app.delete("/users_collection/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const usersCollection = await pool.query(
-      "DELETE FROM users_collection WHERE user_id = $1",
-      [id]
-    );
-    res.json("User's collection was deleted!");
-  } catch (error) {
-    console.error(error.message);
+  const { id } = req.params;
+  const isUserIdValid = await supabase.from("users").select().eq("userId", id);
+  if (isUserIdValid.data.length === 0) {
+    return res.status(404).json({
+      error: "User was not found",
+    });
   }
+
+  const isUserCollectionEmpty = await supabase
+    .from("users_collection")
+    .select()
+    .eq("userId", id);
+  if (isUserCollectionEmpty.data.length === 0) {
+    return res.status(404).json({
+      error: "User's collection is empty!",
+    });
+  }
+
+  const { data, error } = await supabase
+    .from("users_collection")
+    .delete()
+    .eq("userId", id);
+  if (error) {
+    alert(error.message);
+    return; // abort
+  }
+
+  res.json("User's collection was successfully deleted!");
 });
 
 //Listen to port
