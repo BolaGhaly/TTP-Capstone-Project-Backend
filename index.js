@@ -105,31 +105,27 @@ app.get("/users_collection", async (req, res) => {
 });
 
 //Take a user's id as a param
-//Return an array of objects of the user's id and their players' id (players cards)
+//Return an array of objects of a user's id and their players' id (players cards)
 app.get("/users_collection/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const usersCollection = await pool.query(
-      "SELECT * FROM users_collection WHERE user_id= $1",
-      [id]
-    );
-
-    let result = [];
-    usersCollection.rows.map(async (e) => {
-      console.log(e);
-      let current_id = e.player_id;
-      let currentPlayers = await pool.query(
-        "SELECT * FROM players_info WHERE player_id = $1",
-        [current_id]
-      );
-      result.push(currentPlayers.rows);
+  const { id } = req.params;
+  const isUserIdValid = await supabase.from("users").select().eq("userId", id);
+  if (isUserIdValid.data.length === 0) {
+    return res.status(404).json({
+      error: "User was not found",
     });
-
-    res.json(usersCollection.rows);
-    res.json(result);
-  } catch (error) {
-    console.error(error.message);
   }
+
+  const { data, error } = await supabase
+    .from("users_collection")
+    .select()
+    .eq("userId", id)
+    .order("playerId", { ascending: true });
+  if (error) {
+    alert(error.message);
+    return; // abort
+  }
+
+  res.json(data);
 });
 
 //Take a user's id as a param
