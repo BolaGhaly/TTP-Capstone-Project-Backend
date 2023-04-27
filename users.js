@@ -1,8 +1,8 @@
 require("dotenv").config();
 const { emailValidation, passwordValidation } = require("./validation");
 const bcrypt = require("bcryptjs");
-const { createClient } = require("@supabase/supabase-js");
 
+const { createClient } = require("@supabase/supabase-js");
 const url = process.env.SUPA_BASE_URL;
 const key = process.env.SUPA_BASE_KEY;
 const supabase = createClient(url, key);
@@ -111,7 +111,7 @@ const getUser = async (req, res) => {
   res.json(data);
 };
 
-const updateCurrency = async (req, res) => {
+const updateAccountBalance = async (req, res) => {
   const { id } = req.params;
   const { accountBalance } = req.body;
   const { data, error } = await supabase
@@ -130,7 +130,7 @@ const updateCurrency = async (req, res) => {
     });
   }
 
-  res.json("Currency is now updated!");
+  res.json("Account balance is now updated!");
 };
 
 const deleteUser = async (req, res) => {
@@ -155,10 +155,10 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  getUsers,
-  getUser,
   createUser,
   login,
-  updateCurrency,
+  getUsers,
+  getUser,
+  updateAccountBalance,
   deleteUser,
 };

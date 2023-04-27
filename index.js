@@ -26,7 +26,7 @@ app.post("/signup", users.createUser);
 app.post("/login", users.login);
 app.get("/users", users.getUsers);
 app.get("/user/:id", users.getUser);
-app.put("/user/:id", users.updateCurrency);
+app.put("/user/:id", users.updateAccountBalance);
 app.delete("/user/:id", users.deleteUser);
 
 //--------------------------- Routes for user's collection --------------------------
