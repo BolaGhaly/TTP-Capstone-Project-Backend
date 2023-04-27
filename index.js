@@ -58,16 +58,36 @@ app.delete("/user/:id", login_db.deleteUser);
 //--------------------------- Routes for user's collection --------------------------
 //Insert the user's id (of the user that's logged in) and the player's id (of the card that they received from opening a pack/chest)
 app.post("/users_collection", async (req, res) => {
-  try {
-    const { user_id, player_id } = req.body;
-    const newUserCollection = await pool.query(
-      "INSERT INTO users_collection (user_id, player_id) VALUES ($1, $2) RETURNING *",
-      [user_id, player_id]
-    );
-    res.json(newUserCollection.rows);
-  } catch (error) {
-    console.error(error.message);
+  const { userId, playerId } = req.body;
+  const isUserIdValid = await supabase
+    .from("users")
+    .select()
+    .eq("userId", userId);
+  if (isUserIdValid.data.length === 0) {
+    return res.status(404).json({
+      error: "User was not found",
+    });
   }
+
+  const isPlayerIdValid = await supabase
+    .from("players")
+    .select()
+    .eq("playerId", playerId);
+  if (isPlayerIdValid.data.length === 0) {
+    return res.status(404).json({
+      error: "Player was not found",
+    });
+  }
+
+  const { data, error } = await supabase
+    .from("users_collection")
+    .insert({ userId, playerId })
+    .select();
+  if (error) {
+    alert(error.message);
+    return; // abort
+  }
+  res.json(data);
 });
 
 //Return everything that's in the "users_collection" table
