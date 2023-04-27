@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const compression = require("compression"); // import compression to reduce size of response
+const compression = require("compression");
 const port = process.env.PORT || 5200;
 
-const players = require("./players")
-const login_db = require("./login_and_signup_db");
+const players = require("./players");
+const users = require("./users");
 
 const { createClient } = require("@supabase/supabase-js");
 const url = process.env.SUPA_BASE_URL;
@@ -26,12 +26,12 @@ app.get("/players_cards", players.getAllPlayers);
 app.get("/players_cards/:id", players.getPlayerById);
 
 //--------------------------- Routes for login and sign up --------------------------
-app.post("/signup", login_db.createUser);
-app.post("/login", login_db.login);
-app.get("/users", login_db.getUsers);
-app.get("/user/:id", login_db.getUser);
-app.put("/user/:id", login_db.updateCurrency);
-app.delete("/user/:id", login_db.deleteUser);
+app.post("/signup", users.createUser);
+app.post("/login", users.login);
+app.get("/users", users.getUsers);
+app.get("/user/:id", users.getUser);
+app.put("/user/:id", users.updateCurrency);
+app.delete("/user/:id", users.deleteUser);
 
 //--------------------------- Routes for user's collection --------------------------
 //Insert the user's id (of the user that's logged in) and the player's id (of the card that they received from opening a pack/chest)
@@ -101,7 +101,7 @@ app.get("/users_collection/:id", async (req, res) => {
       error: "User's collection is empty!",
     });
   }
-  
+
   const { data, error } = await supabase
     .from("users_collection")
     .select()
