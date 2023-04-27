@@ -13,14 +13,14 @@
 ## Custom Routes
 
 <details open>
-<summary> :basketball: NBA Players Information Table </summary>
+<summary> :basketball: Players Table </summary>
 <br />
 
 ```http
 GET /players_cards
 ```
   - Description: Returns all players.
-<img src="https://user-images.githubusercontent.com/59656591/156496571-ef59e681-c33c-4d5b-aaea-06977b14556f.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234909911-2c123bd3-c05d-4596-b164-b129cef96a8e.png">
 
 <br />
 <br />
@@ -30,13 +30,13 @@ GET /players_cards/{id}
 ```
   - Parameter: ```id``` - Integer
   - Description: Returns a specific player based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156496724-44cc32b5-5b9b-4645-92c6-b078ffa4cde5.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234910738-a5db2df0-a6d5-4a59-808a-f3025cc65c38.png">
 
 </details>
 
 
 <details>
-<summary> :closed_lock_with_key: Login and Sign Up Table </summary>
+<summary> :closed_lock_with_key: Users Table </summary>
 <br />
 
 ```http
@@ -46,9 +46,9 @@ POST /signup
     - ```username``` - String
     - ```email``` - String
     - ```password``` - String
-    - ```currency``` - Integer
-  - Description: Creates and inserts a new user account with the given information in the database.
-<img src="https://user-images.githubusercontent.com/59656591/156504947-f46ab39d-dd30-4d8e-897b-a3bcc94c97c7.PNG">
+    - ```accountBalance``` - Integer
+  - Description: Creates and inserts a new user account with the given information into the database.
+<img src="https://user-images.githubusercontent.com/59656591/234912707-a6287c66-e3c5-442b-8b9d-cad0b70bf489.png">
 
 <br/>
 <br/>
@@ -61,7 +61,7 @@ POST /login
     - ```email``` - String
     - ```password``` - String
   - Description: Allows a user to login with their existing account to gain access to our application by entering their ```email``` and ```password```.
-<img src="https://user-images.githubusercontent.com/59656591/156505159-6011eb05-2ce7-48cf-8a83-3df9dd8e12d8.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234914447-bf99f27d-7d67-4ccf-ba7d-8b51befc0582.png">
 
 <br />
 <br />
@@ -70,7 +70,7 @@ POST /login
 GET /users
 ```
   - Description: Returns all users.
-<img src="https://user-images.githubusercontent.com/59656591/156502469-e7a210dd-999c-41b2-8235-0ff94ba1e118.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234915628-2ef15de5-6187-47c8-b025-1204d0f15e9f.png">
 
 <br />
 <br />
@@ -80,7 +80,7 @@ GET /user/{id}
 ```
   - Parameter: ```id``` - Integer
   - Description: Returns a specific user based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156502606-e778a218-052f-4aa9-b3c6-b6262c7ecb4e.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234917574-6e205306-1375-4905-9f3d-5e0447968a5f.png">
 
 <br/>
 <br />
@@ -90,9 +90,9 @@ PUT /user/{id}
 ```
   - Parameter: ```id``` - Integer
   - Body:
-    - ```currency``` - Integer
-  - Description: Updates a user's ```currency``` (balance) based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156505764-01d8f348-ca97-419e-b61b-c4fec1da8686.PNG">
+    - ```accountBalance``` - Integer
+  - Description: Updates a user's account balance based on the given ```id```.
+<img src="https://user-images.githubusercontent.com/59656591/234919495-a551299e-e6b8-410c-af3c-b6e60edfbe9b.png">
 
 <br/>
 <br/>
@@ -102,23 +102,22 @@ DELETE /user/{id}
 ```
   - Parameter: ```id``` - Integer
   - Description: Permanently deletes a user's account from the database based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156502682-f7cfcd89-22b9-476f-894b-8bfaf902ac82.PNG">
-  
+<img src="https://user-images.githubusercontent.com/59656591/234923510-7b16f92b-15f7-4569-b75a-a2a9610cb6d6.png">
 
 </details>
  
 <details>
-<summary> :notebook_with_decorative_cover: User's Collection Joint Table </summary>
+<summary> :notebook_with_decorative_cover: Users Collections Table </summary>
 <br />
 
 ```http
 POST /users_collection
 ```
   - Body:
-    - ```user_id``` - Integer
-    - ```player_id``` - Integer
+    - ```userId``` - Integer
+    - ```playerId``` - Integer
   - Description: Adds the player's card that a user receives from opening a pack/chest to their card collection.
-<img src="https://user-images.githubusercontent.com/59656591/156501897-94cff0a7-0435-41c9-aedd-771526ce7fae.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234929243-dc1d30a9-9dc0-4740-a2a5-1db0af545596.png">
 
 <br/>
 <br/>
@@ -126,8 +125,8 @@ POST /users_collection
 ```http
 GET /users_collection
 ```
-  - Description: Returns all records that are in the ```users_collection``` table.
-<img src="https://user-images.githubusercontent.com/59656591/156503671-a4bc9c64-46c8-45c0-9e99-dd6065bd0e75.png">
+  - Description: Returns all records that are in the ```users_collections``` table.
+<img src="https://user-images.githubusercontent.com/59656591/234929787-83de3a25-49fe-4469-ac9f-2361c2011b2f.png">
 
 <br/>
 <br/>
@@ -137,7 +136,7 @@ GET /users_collection/{id}
 ```
   - Parameter: ```id``` - Integer
   - Description: Returns a user's card collection based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156501296-8ba98300-b8de-4513-9024-3689550906a9.PNG">
+<img src="https://user-images.githubusercontent.com/59656591/234931348-3088b80c-3e79-4d0a-8a64-5e1b24aa4c46.png">
 
 <br/>
 <br/>
@@ -147,6 +146,6 @@ DELETE /users_collection/{id}
 ```
   - Parameter: ```id``` - Integer
   - Description: Permanently deletes a user's card collection based on the given ```id```.
-<img src="https://user-images.githubusercontent.com/59656591/156502930-e90b633f-fc51-4167-afde-749e656774a4.PNG">
-  
+<img src="https://user-images.githubusercontent.com/59656591/234932011-214df6f9-932a-4671-9c39-b7c52a1ccbff.png">
+
 </details>
