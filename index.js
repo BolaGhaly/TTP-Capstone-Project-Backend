@@ -6,11 +6,7 @@ const port = process.env.PORT || 5200;
 
 const players = require("./players");
 const users = require("./users");
-
-const { createClient } = require("@supabase/supabase-js");
-const url = process.env.SUPA_BASE_URL;
-const key = process.env.SUPA_BASE_KEY;
-const supabase = createClient(url, key);
+const usersCollections = require("./usersCollections");
 
 //middleware
 app.use(compression());
@@ -34,119 +30,10 @@ app.put("/user/:id", users.updateCurrency);
 app.delete("/user/:id", users.deleteUser);
 
 //--------------------------- Routes for user's collection --------------------------
-//Insert the user's id (of the user that's logged in) and the player's id (of the card that they received from opening a pack/chest)
-app.post("/users_collection", async (req, res) => {
-  const { userId, playerId } = req.body;
-  const isUserIdValid = await supabase
-    .from("users")
-    .select()
-    .eq("userId", userId);
-  if (isUserIdValid.data.length === 0) {
-    return res.status(404).json({
-      error: "User was not found",
-    });
-  }
-
-  const isPlayerIdValid = await supabase
-    .from("players")
-    .select()
-    .eq("playerId", playerId);
-  if (isPlayerIdValid.data.length === 0) {
-    return res.status(404).json({
-      error: "Player was not found",
-    });
-  }
-
-  const { data, error } = await supabase
-    .from("users_collection")
-    .insert({ userId, playerId })
-    .select();
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-  res.json(data);
-});
-
-//Return everything that's in the "users_collection" table
-app.get("/users_collection", async (req, res) => {
-  const { data, error } = await supabase
-    .from("users_collection")
-    .select()
-    .order("userId", { ascending: true })
-    .order("playerId", { ascending: true });
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-  res.json(data);
-});
-
-//Take a user's id as a param
-//Return an array of objects of a user's id and their players' id (players cards)
-app.get("/users_collection/:id", async (req, res) => {
-  const { id } = req.params;
-  const isUserIdValid = await supabase.from("users").select().eq("userId", id);
-  if (isUserIdValid.data.length === 0) {
-    return res.status(404).json({
-      error: "User was not found",
-    });
-  }
-  const isUserCollectionEmpty = await supabase
-    .from("users_collection")
-    .select()
-    .eq("userId", id);
-  if (isUserCollectionEmpty.data.length === 0) {
-    return res.status(404).json({
-      error: "User's collection is empty!",
-    });
-  }
-
-  const { data, error } = await supabase
-    .from("users_collection")
-    .select()
-    .eq("userId", id)
-    .order("playerId", { ascending: true });
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-
-  res.json(data);
-});
-
-//Take a user's id as a param
-//Delete a user's collection
-app.delete("/users_collection/:id", async (req, res) => {
-  const { id } = req.params;
-  const isUserIdValid = await supabase.from("users").select().eq("userId", id);
-  if (isUserIdValid.data.length === 0) {
-    return res.status(404).json({
-      error: "User was not found",
-    });
-  }
-
-  const isUserCollectionEmpty = await supabase
-    .from("users_collection")
-    .select()
-    .eq("userId", id);
-  if (isUserCollectionEmpty.data.length === 0) {
-    return res.status(404).json({
-      error: "User's collection is empty!",
-    });
-  }
-
-  const { data, error } = await supabase
-    .from("users_collection")
-    .delete()
-    .eq("userId", id);
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-
-  res.json("User's collection was successfully deleted!");
-});
+app.post("/users_collection", usersCollections.addPlayerToUserCollection);
+app.get("/users_collection", usersCollections.getAllUsersCollections);
+app.get("/users_collection/:id", usersCollections.getUserCollectionByUserId);
+app.delete("/users_collection/:id", usersCollections.deleteUserCollectionByUserId);
 
 //Listen to port
 app.listen(port, () => {
