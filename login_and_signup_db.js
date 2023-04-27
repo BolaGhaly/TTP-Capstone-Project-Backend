@@ -104,7 +104,7 @@ const getUser = async (req, res) => {
 
   if (data.length === 0) {
     return res.status(404).json({
-      error: "User not found",
+      error: "User was not found",
     });
   }
 
@@ -112,18 +112,25 @@ const getUser = async (req, res) => {
 };
 
 const updateCurrency = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { currency } = req.body;
-    const changeCurrency = await pool.query(
-      "UPDATE users SET currency = $1 WHERE id = $2", //update in users table set currency to $1
-      [currency, id] //specify table
-    );
-
-    res.json("currency was updated!");
-  } catch (err) {
-    console.error(err.message);
+  const { id } = req.params;
+  const { accountBalance } = req.body;
+  const { data, error } = await supabase
+    .from("users")
+    .update({ accountBalance })
+    .match({ userId: id })
+    .select();
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+
+  if (data.length === 0) {
+    return res.status(404).json({
+      error: "User was not found",
+    });
+  }
+
+  res.json("Currency is now updated!");
 };
 
 const deleteUser = async (req, res) => {
