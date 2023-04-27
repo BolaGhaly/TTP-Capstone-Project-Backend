@@ -134,16 +134,24 @@ const updateCurrency = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedUser = await pool.query("DELETE FROM users WHERE id = $1", [
-      id,
-    ]);
-
-    res.json("User was deleted!");
-  } catch (err) {
-    console.error(err.message);
+  const { id } = req.params;
+  const { data, error } = await supabase
+    .from("users")
+    .delete()
+    .match({ userId: id })
+    .select();
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+
+  if (data.length === 0) {
+    return res.status(404).json({
+      error: "User was not found",
+    });
+  }
+
+  res.json("User was successfully deleted!");
 };
 
 module.exports = {
