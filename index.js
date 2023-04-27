@@ -114,7 +114,16 @@ app.get("/users_collection/:id", async (req, res) => {
       error: "User was not found",
     });
   }
-
+  const isUserCollectionEmpty = await supabase
+    .from("users_collection")
+    .select()
+    .eq("userId", id);
+  if (isUserCollectionEmpty.data.length === 0) {
+    return res.status(404).json({
+      error: "User's collection is empty!",
+    });
+  }
+  
   const { data, error } = await supabase
     .from("users_collection")
     .select()
