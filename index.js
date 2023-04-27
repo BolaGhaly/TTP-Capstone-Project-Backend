@@ -3,9 +3,11 @@ const app = express();
 const cors = require("cors");
 const compression = require("compression"); // import compression to reduce size of response
 const port = process.env.PORT || 5200;
-const login_db = require("./login_and_signup_db");
-const { createClient } = require("@supabase/supabase-js");
 
+const players = require("./players")
+const login_db = require("./login_and_signup_db");
+
+const { createClient } = require("@supabase/supabase-js");
 const url = process.env.SUPA_BASE_URL;
 const key = process.env.SUPA_BASE_KEY;
 const supabase = createClient(url, key);
@@ -20,32 +22,8 @@ app.get("/", (req, res) => {
 });
 
 //--------------------------- Routes for players --------------------------
-//Get all players' cards
-app.get("/players_cards", async (req, res) => {
-  const { data, error } = await supabase
-    .from("players")
-    .select()
-    .order("playerId", { ascending: true });
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-  res.json(data);
-});
-
-//Get a player's card by their id
-app.get("/players_cards/:id", async (req, res) => {
-  const { id } = req.params;
-  const { data, error } = await supabase
-    .from("players")
-    .select()
-    .eq("playerId", id);
-  if (error) {
-    alert(error.message);
-    return; // abort
-  }
-  res.json(data);
-});
+app.get("/players_cards", players.getAllPlayers);
+app.get("/players_cards/:id", players.getPlayerById);
 
 //--------------------------- Routes for login and sign up --------------------------
 app.post("/signup", login_db.createUser);
