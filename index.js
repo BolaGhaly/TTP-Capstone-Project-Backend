@@ -92,14 +92,16 @@ app.post("/users_collection", async (req, res) => {
 
 //Return everything that's in the "users_collection" table
 app.get("/users_collection", async (req, res) => {
-  try {
-    const allUsersCollection = await pool.query(
-      "SELECT * FROM users_collection"
-    );
-    res.json(allUsersCollection.rows);
-  } catch (error) {
-    console.error(error.message);
+  const { data, error } = await supabase
+    .from("users_collection")
+    .select()
+    .order("userId", { ascending: true })
+    .order("playerId", { ascending: true });
+  if (error) {
+    alert(error.message);
+    return; // abort
   }
+  res.json(data);
 });
 
 //Take a user's id as a param
