@@ -108,6 +108,13 @@ const login = async (req, res) => {
     return res.json(userLogin.error);
   }
 
+  let loggedInUserId = await supabase
+    .from("users")
+    .select("userId")
+    .eq("email", userLogin.data.user.email);
+  loggedInUserId = loggedInUserId.data[0].userId;
+
+  response.userId = loggedInUserId;
   response.status = 200;
   response.message = "User logged in successfully!";
   return res.json(response);
