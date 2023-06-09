@@ -12,10 +12,15 @@ const createUser = async (req, res) => {
   let errors = {};
 
   if (!emailValidation(email)) {
-    errors.email = "Email is not valid";
+    errors.message = "Email is not valid";
+    errors.status = 401;
+    return res.json(errors);
   }
+
   if (!passwordValidation(password)) {
-    errors.password = "Password is not valid";
+    errors.message = "Password is not valid";
+    errors.status = 401;
+    return res.json(errors);
   }
 
   const isUsernameInUse = await supabase
@@ -23,32 +28,47 @@ const createUser = async (req, res) => {
     .select()
     .eq("username", username);
   if (isUsernameInUse.data.length > 0) {
-    errors.username = "Username is already in use";
+    errors.message = "Username is already in use";
+    errors.status = 401;
+    return res.json(errors);
   }
 
-  const isEmailInUse = await supabase.from("users").select().eq("email", email);
-  if (isEmailInUse.data.length > 0) {
-    errors.email = "Email is already in use";
-  }
+  const userSignUp = await supabase.auth.signUp(
+    {
+      email,
+      password,
+    },
+    {
+      data: {
+        username,
+        accountBalance,
+      },
+    }
+  );
 
-  if (Object.keys(errors).length > 0) {
-    return res.status(400).json(errors);
+  if (userSignUp.error) {
+    userSignUp.error.status = 401;
+    userSignUp.error.message = "Email is already in use";
+    return res.json(userSignUp.error);
   }
 
   const salt = await bcrypt.genSalt(10); //salt encryption
   const hashedPassword = await bcrypt.hash(password, salt); //hash encryption
 
-  const { data, error } = await supabase
+  const insertNewUser = await supabase
     .from("users")
     .insert({ username, email, password: hashedPassword, accountBalance })
     .select();
 
-  if (error) {
-    alert(error.message);
-    return; // abort
+  if (insertNewUser.error) {
+    errors.message = insertNewUser.error.message;
+    errors.status = 401;
+    return res.json(errors);
   }
 
-  res.json(data);
+  insertNewUser.data[0].status = 200;
+  insertNewUser.data[0].message = "User created successfully!";
+  res.json(insertNewUser.data);
 };
 
 const login = async (req, res) => {
