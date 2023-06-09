@@ -73,30 +73,44 @@ const createUser = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  let errors = {};
+  let response = {};
 
   const { data, error } = await supabase
     .from("users")
     .select()
     .eq("email", email);
-
   if (error) {
     alert(error.message);
     return; // abort
   }
 
   if (data.length === 0) {
-    errors.email = "Email is not registered";
-    return res.status(400).json(errors);
+    response.status = 401;
+    response.message = "Email is not registered";
+    return res.json(response);
   }
 
   const isMatch = await bcrypt.compare(password, data[0].password);
   if (!isMatch) {
-    errors.password = "Password is incorrect";
-    return res.status(400).json(errors);
+    response.status = 401;
+    response.message = "Invalid login credentials";
+    return res.json(response);
   }
 
-  res.json(data);
+  const userLogin = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (userLogin.error) {
+    userLogin.error.status = 401;
+    userLogin.error.message = "Invalid login credentials";
+    return res.json(userLogin.error);
+  }
+
+  response.status = 200;
+  response.message = "User logged in successfully!";
+  return res.json(response);
 };
 
 const getUsers = async (req, res) => {
